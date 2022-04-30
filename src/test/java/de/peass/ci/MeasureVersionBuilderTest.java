@@ -3,6 +3,7 @@ package de.peass.ci;
 import java.io.File;
 import java.io.IOException;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Rule;
@@ -30,6 +31,11 @@ public class MeasureVersionBuilderTest {
    
    @Test
    public void testNoGitFailure() throws Exception {
+      Thread.sleep(500);
+      System.out.println();
+      System.out.println(); // Just print empty lines to help debugging github actions failure
+      System.out.println("Starting testNoGitFailure: " + System.currentTimeMillis() + " " + Thread.currentThread());
+      
       FreeStyleProject project = jenkins.createFreeStyleProject();
 
       MeasureVersionBuilder builder = createSimpleBuilder();
@@ -42,6 +48,11 @@ public class MeasureVersionBuilderTest {
    
    @Test
    public void testFullBuild() throws Exception {
+      Thread.sleep(500);
+      System.out.println();
+      System.out.println(); // Just print empty lines to help debugging github actions failure
+      System.out.println("Starting testFullBuild: " + System.currentTimeMillis() + " " + Thread.currentThread());
+      
       // Windows tends to create some strange errors when trying to copy .git-folders; therefore, windows builds are currently not fully supported
       Assume.assumeFalse(EnvironmentVariables.isWindows()); 
       
