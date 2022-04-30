@@ -30,23 +30,6 @@ public class MeasureVersionBuilderTest {
    public JenkinsRule jenkins = new JenkinsRule();
    
    @Test
-   public void testNoGitFailure() throws Exception {
-      Thread.sleep(500);
-      System.out.println();
-      System.out.println(); // Just print empty lines to help debugging github actions failure
-      System.out.println("Starting testNoGitFailure: " + System.currentTimeMillis() + " " + Thread.currentThread());
-      
-      FreeStyleProject project = jenkins.createFreeStyleProject();
-
-      MeasureVersionBuilder builder = createSimpleBuilder();
-
-      project.getBuildersList().add(builder);
-      project = jenkins.configRoundtrip(project);
-
-      FreeStyleBuild build = jenkins.buildAndAssertStatus(Result.FAILURE, project);
-   }
-   
-   @Test
    public void testFullBuild() throws Exception {
       Thread.sleep(500);
       System.out.println();
